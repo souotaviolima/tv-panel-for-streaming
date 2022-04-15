@@ -29,10 +29,8 @@
   overflow: hidden;
   width: 100%;
   animation: animated-width-identidade 0.3s;
-border-radius: 15px;
-    
-    
-    }
+  border-radius: 15px;
+}
 
 @keyframes animated-width-identidade {
   from {
@@ -48,11 +46,7 @@ border-radius: 15px;
   height: 130px;
   object-fit: cover;
   display: block;
-  
-
-    
-    
-    }
+border-radius: 15px;}
 
 .identidade.animated-in-identidade .identidade-content img {
   opacity: 1;
@@ -110,12 +104,17 @@ border-radius: 15px;
   color: #ffffff;
   filter: drop-shadow(2px 2px 1px #00000090);
   white-space: nowrap;
-margin: 0px 0px 8px 0px;}
+  margin: 0px 0px 8px 0px;
+}
 
 .logo .logo-image,
 .logo .logo-title {
   display: flex;
   justify-content: center;
+}
+
+.logo .logo-title {
+  /* filter: brightness(29.5); */
 }
 
 .logo .logo-image img {
@@ -151,14 +150,13 @@ margin: 0px 0px 8px 0px;}
 .logo .logo-title h3 {
   opacity: 1;
   letter-spacing: 0px;
-  
-  
+
   display: inline-block;
   position: relative;
   font-family: "Merriweather", serif;
   -webkit-mask-image: linear-gradient(
     -75deg,
-    rgba(0, 0, 0, 0.6) 30%,
+    rgb(0 0 0 / 45%) 30%,
     #080808 50%,
     rgba(0, 0, 0, 0.6) 70%
   );
@@ -211,10 +209,7 @@ margin: 0px 0px 8px 0px;}
   opacity: 1;
   width: 70%;
   animation: animated-in-lower-opacity 0.3s;
-
-    
-    
-    }
+}
 
 .lower.animated-out-lower {
   opacity: 0;
@@ -244,19 +239,23 @@ margin: 0px 0px 8px 0px;}
   width: 30px;
   height: 100%;
   position: absolute;
-  
+
   z-index: 9999;
 }
 
 .lower .lower-title {
-  display: table;background-image: url("../img/texture.png");"); */background-position: initial;padding: 7px;
+  display: table;
+  background-image: url("../img/texture.png");
+  background-position: initial;
+  padding: 7px;
   box-shadow: 0px 0px 3px 3px #99999914;
   border-radius: 15px 5px 20px 0;
   padding: 10px 0px;
-border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-style: solid;
-    border-image: linear-gradient(to left, #00000063, transparent) 1;}
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(to left, #00000063, transparent) 1;
+}
 
 .lower .lower-header h2 {
   font-family: "Panton Black Italic";
@@ -285,7 +284,7 @@ border-top-width: 1px;
 .lower .lower-content .lower-subtitle {
   display: table;
   padding: 9px 7px 8px 5px;
-  
+
   background: #ffffffd1;
   box-shadow: 2px 4px 3px 3px #9999990a;
   z-index: 9999;
@@ -295,8 +294,9 @@ border-top-width: 1px;
 
 .lower .lower-content h3 {
   font-family: sans-serif;
-  
-  font-size: 1.2vw;color: #262626;
+
+  font-size: 1.2vw;
+  color: #262626;
   margin: 2px 32px;
   font-weight: 600;
 }
@@ -304,10 +304,11 @@ border-top-width: 1px;
 .lower.animated-in-lower .lower-bar {
   height: 100%;
   animation: animated-in-lower-bar-scale 0.5s;
-border-left-width: 1px;
-    
-    border-style: solid;
-    border-image: linear-gradient(to left, #00000063, transparent) 1;}
+  border-left-width: 1px;
+
+  border-style: solid;
+  border-image: linear-gradient(to left, #00000063, transparent) 1;
+}
 
 .lower.animated-out-lower .lower-bar {
   height: 0%;
