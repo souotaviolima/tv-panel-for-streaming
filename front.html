@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browser - Utilitário de transmissão</title>
+    <link rel="stylesheet" href="assets/css/styles.reset.css" />
+    <link rel="stylesheet" href="assets/css/styles.front.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <div id="identidade" class="identidade"></div>
+        <div id="lower" class="lower">
+          <div class="item">
+            <div class="lower-header">
+              <div id="lower-title" class="lower-title"></div>
+            </div>
+            <div class="lower-content">
+              <div id="lower-bar" class="lower-bar"></div>
+              <div id="lower-subtitle" class="lower-subtitle"></div>
+            </div>
+          </div>
+        </div>
+        <div id="logo" class="logo">
+          <div class="logo-container">
+            <div id="logo-title" class="logo-title"></div>
+            <div id="logo-image" class="logo-image"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="assets/js/jquery.min.js"></script>
+  <script>
+    const bc = new BroadcastChannel("frontChannel");
+
+    bc.onmessage = (e) => {
+      if (e.data.type === "identidade") {
+        const identidade = document.getElementById("identidade");
+        if (e.data.status) {
+          identidade.classList.add("animated-in-identidade");
+          identidade.classList.remove("animated-out-identidade");
+          identidade.innerHTML =
+            '<div class="identidade-content">' +
+            '<img src="images/' +
+            e.data.data[0].image +
+            '"/></div>';
+        } else {
+          identidade.classList.remove("animated-in-identidade");
+          identidade.classList.add("animated-out-identidade");
+        }
+      }
+
+      if (e.data.type === "logo") {
+        var logo = document.getElementById("logo");
+        var image = document.getElementById("logo-image");
+        var title = document.getElementById("logo-title");
+        if (e.data.status) {
+          logo.classList.add("animated-in-logo");
+          logo.classList.remove("animated-out-logo");
+          image.innerHTML =
+            '<img height="80px" src="images/' + e.data.data[0].image + '"/>';
+          title.innerHTML = "<h3>" + e.data.data[0].title + "<h3>";
+        } else {
+          logo.classList.remove("animated-in-logo");
+          logo.classList.add("animated-out-logo");
+        }
+      }
+
+      if (e.data.type === "lower") {
+        var lower = document.getElementById("lower");
+        var lower_title = document.getElementById("lower-title");
+        var lower_subtitle = document.getElementById("lower-subtitle");
+        var lower_bar = document.getElementById("lower-bar");
+        if (e.data.status) {
+          lower.classList.add("animated-in-lower");
+          // lower.classList.remover("animated-out-lower");
+
+          lower_title.style.backgroundColor = e.data.data[0].identidade[0].color
+            ? e.data.data[0].identidade[0].color
+            : "#052b96";
+          lower_bar.style.backgroundColor = e.data.data[0].identidade[0].color
+            ? e.data.data[0].identidade[0].color
+            : "#052b96";
+          lower_title.innerHTML = "<h2>" + e.data.data[0].title + "</h2>";
+          lower_subtitle.innerHTML = "<h3>" + e.data.data[0].subtitle + "</h3>";
+        } else {
+          lower.classList.remove("animated-in-lower");
+          // lower.classList.add("animated-out-lower");
+        }
+      }
+      
+    };
+  </script>
+  <script src="assets/js/bc.image.js"></script>
+  <script src="assets/js/bc.lower.js"></script>
+</html>

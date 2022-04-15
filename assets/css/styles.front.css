@@ -1,0 +1,382 @@
+@font-face {
+  font-family: "Panton Black Italic";
+  src: url("../fonts/pantonblackitalic.otf");
+}
+
+.container {
+  position: relative;
+  height: 93vh;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-bottom: 10%;
+}
+
+.container .content {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  align-items: flex-end;
+}
+
+.identidade {
+  width: 15%;
+  display: block;
+}
+
+.identidade .identidade-content {
+  overflow: hidden;
+  width: 100%;
+  animation: animated-width-identidade 0.3s;
+}
+
+@keyframes animated-width-identidade {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.identidade .identidade-content img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  display: block;
+  border-radius: 15px;
+}
+
+.identidade.animated-in-identidade .identidade-content img {
+  opacity: 1;
+  transform: scale(1);
+  animation: animated-in-identidade 0.3s;
+}
+
+@keyframes animated-in-identidade {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.identidade.animated-out-identidade .identidade-content img {
+  opacity: 0;
+  transform: scale(0.9);
+  animation: animated-out-identidade 0.3s;
+}
+
+@keyframes animated-out-identidade {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+/* Logo */
+
+.logo {
+  width: 10%;
+  display: block;
+}
+
+.logo .logo-container {
+  position: relative;
+  /* right: -7px; */
+}
+
+.logo.animated-logo .container {
+  display: initial;
+}
+
+.logo .logo-container .logo-title h3 {
+  font-family: sans-serif;
+  font-size: 1.8pc;
+  color: #ffffff;
+  filter: drop-shadow(2px 2px 1px #00000090);
+  white-space: nowrap;
+margin: 0px 0px 8px 0px;}
+
+.logo .logo-image,
+.logo .logo-title {
+  display: flex;
+  justify-content: center;
+}
+
+.logo .logo-image img {
+  opacity: 1;
+  object-fit: cover;
+  animation: animated-opacity-in-logo 0.1s;
+}
+
+@keyframes animated-opacity-in-logo {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.logo.animated-out-logo .logo-image img {
+  opacity: 0;
+  object-fit: cover;
+  animation: animated-opacity-out-logo 0.4s;
+}
+
+@keyframes animated-opacity-out-logo {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.logo .logo-title h3 {
+  opacity: 1;
+  letter-spacing: 0px;
+  
+  
+  display: inline-block;
+  position: relative;
+  font-family: "Merriweather", serif;
+  -webkit-mask-image: linear-gradient(
+    -75deg,
+    rgba(0, 0, 0, 0.6) 30%,
+    #080808 50%,
+    rgba(0, 0, 0, 0.6) 70%
+  );
+  -webkit-mask-size: 200%;
+  animation: shine 2s linear infinite, animated-spacing-title 0.5s;
+}
+
+@keyframes shine {
+  from {
+    -webkit-mask-position: 150%;
+  }
+  to {
+    -webkit-mask-position: -50%;
+  }
+}
+
+@keyframes animated-spacing-title {
+  from {
+    opacity: 0;
+    letter-spacing: -12px;
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 0px;
+  }
+}
+
+.logo.animated-out-logo .logo-title h3 {
+  opacity: 0;
+  animation: animated-spacing-out-title 0.1s;
+}
+
+@keyframes animated-spacing-out-title {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Lower*/
+.lower {
+  opacity: 0;
+  width: 70%;
+  display: block;
+}
+
+.lower.animated-in-lower {
+  opacity: 1;
+  width: 70%;
+  animation: animated-in-lower-opacity 0.3s;
+
+    
+    
+    }
+
+.lower.animated-out-lower {
+  opacity: 0;
+  width: 70%;
+  animation: animated-out-lower-opacity 0.3s;
+}
+
+@keyframes animated-out-lower-opacity {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes animated-in-lower-opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lower .lower-bar {
+  width: 30px;
+  height: 100%;
+  position: absolute;
+  
+  z-index: 9999;
+}
+
+.lower .lower-title {
+  background-image: url("../img/texture.png");
+  
+  background-position: initial;padding: 7px;
+  box-shadow: 0px 0px 3px 3px #99999914;
+  border-radius: 15px 5px 20px 0;
+  padding: 10px 0px;
+border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-image: linear-gradient(to left, #00000063, transparent) 1;}
+
+.lower .lower-header h2 {
+  font-family: "Panton Black Italic";
+  font-size: 2vw;
+  font-weight: 900;
+  color: #ffffff;
+  padding: 0px 30px 0px 13px;
+  text-shadow: 2px 1px #00000061;
+}
+
+.lower .lower-header h2::after {
+  display: block;
+  width: 24px;
+  height: 10px;
+  background: azure;
+}
+
+.lower .lower-content {
+  overflow: hidden;
+  z-index: 9999;
+  position: relative;
+  border-radius: 0px 10px;
+  z-index: 99;
+}
+
+.lower .lower-content .lower-subtitle {
+  display: table;
+  padding: 14px;
+  padding-top: 22px;
+  background: #ffffffd1;
+  box-shadow: 2px 4px 3px 3px #9999990a;
+  z-index: 9999;
+  backdrop-filter: blur(13px);
+  border-radius: 20px 0;
+}
+
+.lower .lower-content h3 {
+  font-family: sans-serif;
+  
+  font-size: 1.8vw;color: #262626;
+  margin: 2px 32px;
+  font-weight: 600;
+}
+
+.lower.animated-in-lower .lower-bar {
+  height: 100%;
+  animation: animated-in-lower-bar-scale 0.5s;
+border-left-width: 1px;
+    
+    border-style: solid;
+    border-image: linear-gradient(to left, #00000063, transparent) 1;}
+
+.lower.animated-out-lower .lower-bar {
+  height: 0%;
+  animation: animated-out-lower-bar-scale 0.5s;
+}
+
+@keyframes animated-in-lower-bar-scale {
+  from {
+    height: 0px;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+@keyframes animated-out-lower-bar-scale {
+  from {
+    height: 100%;
+  }
+  to {
+    height: 0px;
+  }
+}
+
+.lower.animated-in-lower .lower-subtitle {
+  position: relative;
+  z-index: 999;
+  top: 0;
+  animation: animated-in-lower-subtitle-scale 0.5s;
+}
+
+.lower.animated-out-lower .lower-subtitle {
+  position: relative;
+  z-index: 999;
+  top: -10px;
+  animation: animated-out-lower-subtitle-scale 0.5s;
+}
+
+@keyframes animated-out-lower-subtitle-scale {
+  from {
+    top: 0px;
+  }
+  to {
+    top: -10px;
+  }
+}
+
+@keyframes animated-in-lower-subtitle-scale {
+  from {
+    top: -10px;
+  }
+  to {
+    top: 0px;
+  }
+}
+
+.lower.animated-lower .lower-header {
+  display: table;
+  position: relative;
+  z-index: 999;
+  bottom: -12px;
+  animation: lower-header 0.5s;
+  border: 2px solid transparent;
+  border-radius: 15px 5px 20px 0;
+  box-shadow: 2px 4px 3px 3px #9999990a;
+  z-index: 9999;
+}
+
+@keyframes lower-header {
+  from {
+    bottom: -50px;
+  }
+  to {
+    bottom: -12px;
+  }
+}
