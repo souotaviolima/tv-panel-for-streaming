@@ -18,8 +18,8 @@ $(".close-modal-function").click(function () {
 });
 
 $(".clear-data-function").click(function () {
-  localStorage.setItem("logos", "[]");
-  localStorage.setItem("lowers", "[]");
-  localStorage.setItem("color", "{}");
+  localStorage.removeItem("logos");
+  localStorage.removeItem("lower");
+  localStorage.removeItem("identidade");
   location.reload();
 });

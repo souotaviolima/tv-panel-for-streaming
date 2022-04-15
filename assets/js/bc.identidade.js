@@ -28,7 +28,7 @@
 
   if (toGetStorages("identidade").length > 0) {
     var identidade = toGetStorages("identidade");
-    lowerRow(identidade);
+    identidadeRow(identidade);
   }
 
   $("#dentidade-form").submit(function (e) {
@@ -39,9 +39,10 @@
       color: formProps.color,
       image: formProps.image.name,
     };
-    if (data) {
+    if (data && toGetStorages("identidade").length < 1) {
       const response = toCreateStorage("identidade", data, "create");
       if (response) identidadeRow(response);
+      location.reload();
     }
   });
 
@@ -49,6 +50,7 @@
     var id = this.getAttribute("data-id");
     const response = toDeleteStorage(id, "identidade", "delete");
     if (response) identidadeRow(response);
+    location.reload();
   });
 
   $(".select-dentidade-item").click(function () {
@@ -59,6 +61,6 @@
     } else {
       toSendFront("identidade", [], "identidade", false);
     }
-    //checkUncheck(this, ".select-dentidade-item");
+    checkUncheck(this, ".select-dentidade-item");
   });
 })();

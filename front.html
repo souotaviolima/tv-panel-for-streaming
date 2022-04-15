@@ -35,7 +35,6 @@
   <script src="assets/js/jquery.min.js"></script>
   <script>
     const bc = new BroadcastChannel("frontChannel");
-
     bc.onmessage = (e) => {
       if (e.data.type === "identidade") {
         const identidade = document.getElementById("identidade");
@@ -52,7 +51,6 @@
           identidade.classList.add("animated-out-identidade");
         }
       }
-
       if (e.data.type === "logo") {
         var logo = document.getElementById("logo");
         var image = document.getElementById("logo-image");
@@ -68,16 +66,17 @@
           logo.classList.add("animated-out-logo");
         }
       }
-
       if (e.data.type === "lower") {
         var lower = document.getElementById("lower");
         var lower_title = document.getElementById("lower-title");
         var lower_subtitle = document.getElementById("lower-subtitle");
         var lower_bar = document.getElementById("lower-bar");
         if (e.data.status) {
-          lower.classList.add("animated-in-lower");
-          // lower.classList.remover("animated-out-lower");
-
+          lower.classList.remove("animated-out-lower");
+          lower.classList.remove("animated-in-lower");
+          setTimeout(function () {
+            lower.classList.add("animated-in-lower");
+          }, 2000);
           lower_title.style.backgroundColor = e.data.data[0].identidade[0].color
             ? e.data.data[0].identidade[0].color
             : "#052b96";
@@ -87,11 +86,10 @@
           lower_title.innerHTML = "<h2>" + e.data.data[0].title + "</h2>";
           lower_subtitle.innerHTML = "<h3>" + e.data.data[0].subtitle + "</h3>";
         } else {
+          lower.classList.add("animated-out-lower");
           lower.classList.remove("animated-in-lower");
-          // lower.classList.add("animated-out-lower");
         }
       }
-      
     };
   </script>
   <script src="assets/js/bc.image.js"></script>

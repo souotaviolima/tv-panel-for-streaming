@@ -26,8 +26,8 @@
   }
 
   if (toGetStorages("logo").length > 0) {
-    var logo = toGetStorages("lower");
-    lowerRow(logo);
+    var logo = toGetStorages("logo");
+    logoRow(logo);
   }
 
   $("#logo-form").submit(function (e) {
@@ -41,6 +41,7 @@
     if (data) {
       const response = toCreateStorage("logo", data, "create");
       if (response) logoRow(response);
+      location.reload();
     }
   });
 
@@ -48,6 +49,7 @@
     var id = this.getAttribute("data-id");
     const response = toDeleteStorage(id, "logo", "delete");
     if (response) logoRow(response);
+    location.reload();
   });
 
   $(".select-logo-item").click(function () {

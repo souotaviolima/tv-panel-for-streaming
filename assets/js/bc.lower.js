@@ -40,15 +40,16 @@
     e.preventDefault();
     var formData = new FormData(e.target);
     var formProps = Object.fromEntries(formData);
+    var identidade = toGetStorages("identidade");
     var data = {
       title: formProps.title,
       subtitle: formProps.description,
       identidade: toGetStorages("identidade"),
     };
-
-    if (data) {
+    if (data && identidade) {
       const response = toCreateStorage("lower", data, "create");
       if (response) lowerRow(response);
+      location.reload();
     }
   });
 
@@ -56,6 +57,7 @@
     var id = this.getAttribute("data-id");
     const response = toDeleteStorage(id, "lower", "delete");
     if (response) lowerRow(response);
+    location.reload();
   });
 
   $(".select-lower-item").click(function () {
