@@ -1,12 +1,9 @@
-////// BROADCAST //////
-
 const bc = new BroadcastChannel("frontChannel");
-
-function toSendFront(name, data, type, status) {
+function toSendFront(n, t, a, o) {
   try {
-    var dataPost = { name, data, type, status };
-    bc.postMessage(dataPost);
-  } catch (error) {
-    console.log(error);
+    var e = { name: n, data: t, type: a, status: o };
+    bc.postMessage(e);
+  } catch (n) {
+    console.log(n);
   }
 }

@@ -1,25 +1,19 @@
-function checkUncheck(value, selector) {
-  var checks = document.querySelectorAll(selector);
-  checks.forEach((c) => {
-    !value.checked ? value.checked : (c.checked = c == value);
+function checkUncheck(e, t) {
+  document.querySelectorAll(t).forEach((t) => {
+    e.checked ? (t.checked = t == e) : e.checked;
   });
 }
-
 $(".open-modal-function").click(function () {
-  const idModal = this.getAttribute("data-id");
-  const modal = document.getElementById(idModal);
-  modal.classList.add("open");
-});
-
-$(".close-modal-function").click(function () {
-  const idModal = this.getAttribute("data-id");
-  const modal = document.getElementById(idModal);
-  modal.classList.remove("open");
-});
-
-$(".clear-data-function").click(function () {
-  localStorage.removeItem("logos");
-  localStorage.removeItem("lower");
-  localStorage.removeItem("identidade");
-  location.reload();
-});
+  var e = this.getAttribute("data-id");
+  document.getElementById(e).classList.add("open");
+}),
+  $(".close-modal-function").click(function () {
+    var e = this.getAttribute("data-id");
+    document.getElementById(e).classList.remove("open");
+  }),
+  $(".clear-data-function").click(function () {
+    localStorage.removeItem("logos"),
+      localStorage.removeItem("lower"),
+      localStorage.removeItem("identidade"),
+      location.reload();
+  });

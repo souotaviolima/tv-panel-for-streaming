@@ -1,69 +1,54 @@
 (() => {
-  function lowerRow(data) {
-    const preview_lower = document.getElementById("row-lower");
-    let linitials = [];
-    for (var i = 0, len = data.length; i < len; ++i) {
-      var count = i + 1;
-      var lower =
-        '<li id="' +
-        data[i].id +
-        '" class="lower item"><div class="header">' +
-        '<span class="count" style="background-color: ' +
-        data[i].identidade[0].color +
-        '">' +
-        count +
-        '</span><div class="actions"><button class="action remove-lower-item" data-type="delete" data-id="' +
-        data[i].id +
-        '">' +
-        '<div class="main-icon icon icon-trash"></div></button>' +
-        '<label class="action toggle-lower switch" style="width: 48px;"><input type="checkbox" class="select-lower-item" data-type="select" data-id="' +
-        data[i].id +
-        '"/>' +
-        '<span class="slider round"></span></label></div></div>' +
-        '<div class="main"><h2 class="title">' +
-        data[i].title +
-        "</h2>" +
-        '<h3 class="description">' +
-        data[i].subtitle +
-        "</h3></div></li>";
-      linitials.push(lower);
+  function e(e) {
+    const t = document.getElementById("row-lower");
+    let o = [];
+    for (var i = 0, l = e.length; i < l; ++i) {
+      var a = i + 1,
+        s =
+          '<li id="' +
+          e[i].id +
+          '" class="lower item"><div class="header"><span class="count" style="background-color: ' +
+          e[i].identidade[0].color +
+          '">' +
+          a +
+          '</span><div class="actions"><button class="action remove-lower-item" data-type="delete" data-id="' +
+          e[i].id +
+          '"><div class="main-icon icon icon-trash"></div></button><label class="action toggle-lower switch" style="width: 48px;"><input type="checkbox" class="select-lower-item" data-type="select" data-id="' +
+          e[i].id +
+          '"/><span class="slider round"></span></label></div></div><div class="main"><h2 class="title">' +
+          e[i].title +
+          '</h2><h3 class="description">' +
+          e[i].subtitle +
+          "</h3></div></li>";
+      o.push(s);
     }
-    if (preview_lower) preview_lower.innerHTML = linitials;
+    t && (t.innerHTML = o);
   }
-
-  if (toGetStorages("lower").length > 0) {
-    var lower = toGetStorages("lower");
-    lowerRow(lower);
-  }
-
-  $("#lower-form").submit(function (e) {
-    e.preventDefault();
-    var formData = new FormData(e.target);
-    var formProps = Object.fromEntries(formData);
-    var identidade = toGetStorages("identidade");
-    var data = {
-      title: formProps.title,
-      subtitle: formProps.description,
-      identidade: toGetStorages("identidade"),
-    };
-    if (data && identidade) {
-      const response = toCreateStorage("lower", data, "create");
-      if (response) lowerRow(response);
-      location.reload();
+  toGetStorages("lower").length > 0 && e(toGetStorages("lower"));
+  $("#lower-form").submit(function (t) {
+    t.preventDefault();
+    var o = new FormData(t.target),
+      i = Object.fromEntries(o),
+      l = toGetStorages("identidade"),
+      a = {
+        title: i.title,
+        subtitle: i.description,
+        identidade: toGetStorages("identidade"),
+      };
+    if (a && l) {
+      const t = toCreateStorage("lower", a, "create");
+      t && e(t), location.reload();
     }
-  });
-
-  $(".remove-lower-item").click(function () {
-    var id = this.getAttribute("data-id");
-    const response = toDeleteStorage(id, "lower", "delete");
-    if (response) lowerRow(response);
-    location.reload();
-  });
-
-  $(".select-lower-item").click(function () {
-    var id = this.getAttribute("data-id");
-    const response = toGetStorage(id, "lower", "select");
-    toSendFront("lower", response, "lower", this.checked);
-    checkUncheck(this, ".select-lower-item");
-  });
+  }),
+    $(".remove-lower-item").click(function () {
+      var t = this.getAttribute("data-id");
+      const o = toDeleteStorage(t, "lower", "delete");
+      o && e(o), location.reload();
+    }),
+    $(".select-lower-item").click(function () {
+      var e = this.getAttribute("data-id");
+      const t = toGetStorage(e, "lower", "select");
+      toSendFront("lower", t, "lower", this.checked),
+        checkUncheck(this, ".select-lower-item");
+    });
 })();

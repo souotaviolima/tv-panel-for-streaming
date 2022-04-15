@@ -35,60 +35,53 @@
   <script src="assets/js/jquery.min.js"></script>
   <script>
     const bc = new BroadcastChannel("frontChannel");
-    bc.onmessage = (e) => {
-      if (e.data.type === "identidade") {
-        const identidade = document.getElementById("identidade");
-        if (e.data.status) {
-          identidade.classList.add("animated-in-identidade");
-          identidade.classList.remove("animated-out-identidade");
-          identidade.innerHTML =
-            '<div class="identidade-content">' +
-            '<img src="images/' +
-            e.data.data[0].image +
-            '"/></div>';
-        } else {
-          identidade.classList.remove("animated-in-identidade");
-          identidade.classList.add("animated-out-identidade");
-        }
+    bc.onmessage = (t) => {
+      if ("identidade" === t.data.type) {
+        const a = document.getElementById("identidade");
+        t.data.status
+          ? (a.classList.add("animated-in-identidade"),
+            a.classList.remove("animated-out-identidade"),
+            (a.innerHTML =
+              '<div class="identidade-content"><img src="images/' +
+              t.data.data[0].image +
+              '"/></div>'))
+          : (a.classList.remove("animated-in-identidade"),
+            a.classList.add("animated-out-identidade"));
       }
-      if (e.data.type === "logo") {
-        var logo = document.getElementById("logo");
-        var image = document.getElementById("logo-image");
-        var title = document.getElementById("logo-title");
-        if (e.data.status) {
-          logo.classList.add("animated-in-logo");
-          logo.classList.remove("animated-out-logo");
-          image.innerHTML =
-            '<img height="80px" src="images/' + e.data.data[0].image + '"/>';
-          title.innerHTML = "<h3>" + e.data.data[0].title + "<h3>";
-        } else {
-          logo.classList.remove("animated-in-logo");
-          logo.classList.add("animated-out-logo");
-        }
+      if ("logo" === t.data.type) {
+        var a = document.getElementById("logo"),
+          e = document.getElementById("logo-image"),
+          d = document.getElementById("logo-title");
+        t.data.status
+          ? (a.classList.add("animated-in-logo"),
+            a.classList.remove("animated-out-logo"),
+            (e.innerHTML =
+              '<img height="80px" src="images/' + t.data.data[0].image + '"/>'),
+            (d.innerHTML = "<h3>" + t.data.data[0].title + "<h3>"))
+          : (a.classList.remove("animated-in-logo"),
+            a.classList.add("animated-out-logo"));
       }
-      if (e.data.type === "lower") {
-        var lower = document.getElementById("lower");
-        var lower_title = document.getElementById("lower-title");
-        var lower_subtitle = document.getElementById("lower-subtitle");
-        var lower_bar = document.getElementById("lower-bar");
-        if (e.data.status) {
-          lower.classList.remove("animated-out-lower");
-          lower.classList.remove("animated-in-lower");
-          setTimeout(function () {
-            lower.classList.add("animated-in-lower");
-          }, 2000);
-          lower_title.style.backgroundColor = e.data.data[0].identidade[0].color
-            ? e.data.data[0].identidade[0].color
-            : "#052b96";
-          lower_bar.style.backgroundColor = e.data.data[0].identidade[0].color
-            ? e.data.data[0].identidade[0].color
-            : "#052b96";
-          lower_title.innerHTML = "<h2>" + e.data.data[0].title + "</h2>";
-          lower_subtitle.innerHTML = "<h3>" + e.data.data[0].subtitle + "</h3>";
-        } else {
-          lower.classList.add("animated-out-lower");
-          lower.classList.remove("animated-in-lower");
-        }
+      if ("lower" === t.data.type) {
+        var i = document.getElementById("lower"),
+          o = document.getElementById("lower-title"),
+          n = document.getElementById("lower-subtitle"),
+          s = document.getElementById("lower-bar");
+        t.data.status
+          ? (i.classList.remove("animated-out-lower"),
+            i.classList.remove("animated-in-lower"),
+            setTimeout(function () {
+              i.classList.add("animated-in-lower");
+            }, 2e3),
+            (o.style.backgroundColor = t.data.data[0].identidade[0].color
+              ? t.data.data[0].identidade[0].color
+              : "#052b96"),
+            (s.style.backgroundColor = t.data.data[0].identidade[0].color
+              ? t.data.data[0].identidade[0].color
+              : "#052b96"),
+            (o.innerHTML = "<h2>" + t.data.data[0].title + "</h2>"),
+            (n.innerHTML = "<h3>" + t.data.data[0].subtitle + "</h3>"))
+          : (i.classList.add("animated-out-lower"),
+            i.classList.remove("animated-in-lower"));
       }
     };
   </script>

@@ -29,7 +29,10 @@
   overflow: hidden;
   width: 100%;
   animation: animated-width-identidade 0.3s;
-}
+border-radius: 15px;
+    
+    
+    }
 
 @keyframes animated-width-identidade {
   from {
@@ -45,8 +48,11 @@
   height: 130px;
   object-fit: cover;
   display: block;
-  border-radius: 15px;
-}
+  
+
+    
+    
+    }
 
 .identidade.animated-in-identidade .identidade-content img {
   opacity: 1;
@@ -243,9 +249,7 @@ margin: 0px 0px 8px 0px;}
 }
 
 .lower .lower-title {
-  display: table;background-image: url("../img/texture.png");
-  
-  background-position: initial;padding: 7px;
+  display: table;background-image: url("../img/texture.png");"); */background-position: initial;padding: 7px;
   box-shadow: 0px 0px 3px 3px #99999914;
   border-radius: 15px 5px 20px 0;
   padding: 10px 0px;

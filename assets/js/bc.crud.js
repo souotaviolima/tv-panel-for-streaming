@@ -1,59 +1,40 @@
-////// CRUD //////
-
-function toCreateStorage(name, data, type) {
+function toCreateStorage(t, e, o) {
   try {
-    var Storages = localStorage.getItem(name)
-      ? JSON.parse(localStorage.getItem(name))
-      : [];
-    if (Storages) {
-      data.id = Math.random().toString(36).slice(2);
-      var Storage = [...Storages, data];
-      localStorage.setItem(name, JSON.stringify(Storage));
-      return Storage;
-    } else {
-      localStorage.setItem(name, Storage);
-      return Storage;
+    var r = localStorage.getItem(t) ? JSON.parse(localStorage.getItem(t)) : [];
+    if (r) {
+      e.id = Math.random().toString(36).slice(2);
+      var a = [...r, e];
+      return localStorage.setItem(t, JSON.stringify(a)), a;
     }
-  } catch (error) {
-    console.log(error);
+    return localStorage.setItem(t, a), a;
+  } catch (t) {
+    console.log(t);
   }
 }
-
-function toGetStorages(name) {
+function toGetStorages(t) {
   try {
-    var Storages = localStorage.getItem(name)
-      ? JSON.parse(localStorage.getItem(name))
-      : [];
-    if (Storages) return Storages;
-  } catch (error) {
-    console.log(error);
+    var e = localStorage.getItem(t) ? JSON.parse(localStorage.getItem(t)) : [];
+    if (e) return e;
+  } catch (t) {
+    console.log(t);
   }
 }
-
-function toGetStorage(id, name, type) {
+function toGetStorage(t, e, o) {
   try {
-    var Storages = localStorage.getItem(name)
-      ? JSON.parse(localStorage.getItem(name))
-      : [];
-    Storages = Storages.filter((stor) => stor.id === id);
-    if (Storages) return Storages;
-  } catch (error) {
-    console.log(error);
+    var r = localStorage.getItem(e) ? JSON.parse(localStorage.getItem(e)) : [];
+    if ((r = r.filter((e) => e.id === t))) return r;
+  } catch (t) {
+    console.log(t);
   }
 }
-
-function toDeleteStorage(id, name, type) {
+function toDeleteStorage(t, e, o) {
   try {
-    var Storages = localStorage.getItem(name)
-      ? JSON.parse(localStorage.getItem(name))
-      : [];
-    Storages = Storages.filter((stor) => stor.id !== id);
-    if (Storages) {
-      var Storage = JSON.stringify(Storages);
-      localStorage.setItem(name, Storage);
-      return Storages;
+    var r = localStorage.getItem(e) ? JSON.parse(localStorage.getItem(e)) : [];
+    if ((r = r.filter((e) => e.id !== t))) {
+      var a = JSON.stringify(r);
+      return localStorage.setItem(e, a), r;
     }
-  } catch (error) {
-    console.log(error);
+  } catch (t) {
+    console.log(t);
   }
 }
