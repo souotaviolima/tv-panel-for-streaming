@@ -46,7 +46,8 @@
   height: 130px;
   object-fit: cover;
   display: block;
-border-radius: 15px;}
+  border-radius: 15px;
+}
 
 .identidade.animated-in-identidade .identidade-content img {
   opacity: 1;
@@ -150,21 +151,21 @@ border-radius: 15px;}
 .logo .logo-title h3 {
   opacity: 1;
   letter-spacing: 0px;
-
   display: inline-block;
   position: relative;
   font-family: "Merriweather", serif;
   -webkit-mask-image: linear-gradient(
     -75deg,
-    rgb(0 0 0 / 45%) 30%,
-    #080808 50%,
-    rgba(0, 0, 0, 0.6) 70%
+    rgb(0 0 0) 30%,
+    #08080845 50%,
+    rgb(0 0 0) 70%
   );
   -webkit-mask-size: 200%;
-  animation: shine 2s linear infinite, animated-spacing-title 0.5s;
+  -webkit-mask-position: -50%;
+  animation: animated-shine 2s linear infinite, animated-spacing-title 0.5s;
 }
 
-@keyframes shine {
+@keyframes animated-shine {
   from {
     -webkit-mask-position: 150%;
   }
