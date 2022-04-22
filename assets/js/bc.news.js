@@ -1,6 +1,6 @@
 (() => {
     $(".select-news-item").click(function() {
-        const url = "http://news.rbmidia.com/wp-json/wp/v2/posts";
+        const url = "https://blogoalerta.com.br/wp-json/wp/v2/posts?per_page=30";
         const checked = this.checked
         fetch(url)
             .then((resp) => resp.json())
