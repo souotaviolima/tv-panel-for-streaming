@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,104 +9,105 @@
     <link rel="stylesheet" href="assets/css/styles.panel.css" />
     <link rel="stylesheet" href="assets/css/styles.icons.css" />
     <script src="assets/js/jquery.min.js"></script>
-  </head>
-  <body>
+</head>
+
+<body>
     <header>
-      <div class="container">
-        <nav class="navigator">
-          <ul class="row">
-            <li class="nav-item">
-              <a href="#">
-                <div
-                  class="main-icon icon icon-settings open-modal-function"
-                  data-id="modal-config"
-                ></div>
-              </a>
-            </li>
-          </ul>
-          <div class="modal" id="modal-config">
-            <div class="configs">
-              <div class="header">
-                <h2>Configurações</h2>
-              </div>
-              <div class="main">
-                <div id="row-colors" class="row-control"></div>
-                <button class="clear-data-function">
+        <div class="container">
+            <nav class="navigator">
+                <ul class="row">
+                    <li class="nav-item">
+                        <a href="#">
+                            <div class="main-icon icon icon-settings open-modal-function" data-id="modal-config"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="select-news-item">
+                            <div class="main-icon icon icon-settings"></div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="modal" id="modal-config">
+                    <div class="configs">
+                        <div class="header">
+                            <h2>Configurações</h2>
+                        </div>
+                        <div class="main">
+                            <div id="row-colors" class="row-control"></div>
+                            <button class="clear-data-function">
                   Apagar todos os dados
                 </button>
-              </div>
-              <div class="footer">
-                <div class="actions">
-                  <button
-                    class="action close-modal-function"
-                    type="button"
-                    data-id="modal-config"
-                  >
+                        </div>
+                        <div class="footer">
+                            <div class="actions">
+                                <button class="action close-modal-function" type="button" data-id="modal-config">
                     <span>Sair</span>
                   </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </div>
+            </nav>
+        </div>
     </header>
     <main>
-      <div class="container">
-        <div id="identidade" class="identidade">
-          <div class="identidade-header">
-            <div id="identidade-header" class="content">
-              <div class="no-item">
-                <h2 class="title-no-item">Nenhuma identidade definida</h2>
-              </div>
-            </div>
-            <div class="action-modal">
-              <button
-                class="btn btn-secundary large open-modal-function"
-                data-id="modal-identidade"
-              >
-                <span>Selecionar imagem</span>
-              </button>
-            </div>
-          </div>
-          <div class="modal" id="modal-identidade">
-            <form id="dentidade-form" class="idvisual-form">
-              <div class="header">
-                <h2>Nova identidade visual</h2>
-              </div>
-              <div class="main">
-                <input type="file" name="image" required />
-                <input
-                  type="text"
-                  name="color"
-                  placeholder="Cor Ex.: #000000"
-                  class="color"
-                  required
-                />
-              </div>
-              <div class="footer">
-                <div class="actions">
-                  <button class="action" type="submit">
+        <div class="container">
+            <div id="header" class="header">
+                <div class="content-header">
+                    <div class="item-header">
+                        <div id="identidade-header" class="content">
+                            <div class="no-item">
+                                <h2 class="title-no-item">Nenhuma identidade definida</h2>
+                                <button class="btn btn-secundary large open-modal-function" data-id="modal-identidade">
+                    <span>Selecionar imagem</span>
+                  </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item-header">
+
+
+                        <div class="actions">
+                            <h3 style="color: aliceblue;">News</h3>
+                            <label class="action toggle-lower switch" style="width: 48px">
+                  <input
+                    type="checkbox"
+                    class="select-news-item"
+                    data-type="select"
+                  />
+                  <span class="slider round" style="right: 22px;"></span>
+                </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal" id="modal-identidade">
+                    <form id="dentidade-form" class="idvisual-form">
+                        <div class="header">
+                            <h2>Nova identidade visual</h2>
+                        </div>
+                        <div class="main">
+                            <input type="file" name="image" required />
+                            <input type="text" name="color" placeholder="Cor Ex.: #000000" class="color" required />
+                        </div>
+                        <div class="footer">
+                            <div class="actions">
+                                <button class="action" type="submit">
                     <span>Criar e sair</span>
                   </button>
-                  <button
-                    class="action close-modal-function"
-                    type="button"
-                    data-id="modal-visualid"
-                  >
+                                <button class="action close-modal-function" type="button" data-id="modal-visualid">
                     <span>Sair sem criar</span>
                   </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div id="logos" class="logos">
-          <div class="header-section">
-            <div class="infos-header">
-              <h2 class="title">Suas logos</h2>
-              <span class="description"
-                >Adicione, remova ou use suas logos.</span
+            </div>
+            <div id="logos" class="logos">
+                <div class="header-section">
+                    <div class="infos-header">
+                        <h2 class="title">Suas logos</h2>
+                        <span class="description">Adicione, remova ou use suas logos.</span
               >
             </div>
             <button
@@ -114,69 +116,55 @@
             >
               <div class="main-icon icon icon-plus"></div>
               <span>ADICIONAR</span>
-            </button>
-          </div>
-          <div class="modal" id="modal-logo">
-            <form id="logo-form" class="logo-form">
-              <div class="header">
-                <h2>Nova logo</h2>
-              </div>
-              <div class="main">
-                <input type="file" name="image" required />
-                <input
-                  type="text"
-                  name="title"
-                  placeholder="Título"
-                  class="title"
-                />
-              </div>
-              <div class="footer">
-                <div class="actions">
-                  <button class="action" type="submit">
+                        </button>
+                    </div>
+                    <div class="modal" id="modal-logo">
+                        <form id="logo-form" class="logo-form">
+                            <div class="header">
+                                <h2>Nova logo</h2>
+                            </div>
+                            <div class="main">
+                                <input type="file" name="image" required />
+                                <input type="text" name="title" placeholder="Título" class="title" />
+                            </div>
+                            <div class="footer">
+                                <div class="actions">
+                                    <button class="action" type="submit">
                     <span>Criar e sair</span>
                   </button>
-                  <button
-                    class="action close-modal-function"
-                    type="button"
-                    data-id="modal-logo"
-                  >
+                                    <button class="action close-modal-function" type="button" data-id="modal-logo">
                     <span>Sair sem criar</span>
                   </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="content">
+                        <ul id="row-logo" class="row">
+                            <div class="no-item">
+                                <h2 class="title-no-item">Nenhuma logo<br />encontrada</h2>
+                                <img class="image-no-item" src="assets/img/empty-folder.png" />
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="footer">
+                        <ul class="list-items">
+                            <li class="item btn action-logo" data-type="select_null" data-id="null">
+                                <a>
+                                    <div class="icon-item">
+                                        <div class="main-icon icon icon-trash"></div>
+                                    </div>
+                                    <span class="title-item">Desligar tudo</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-              </div>
-            </form>
-          </div>
-          <div class="content">
-            <ul id="row-logo" class="row">
-              <div class="no-item">
-                <h2 class="title-no-item">Nenhuma logo<br />encontrada</h2>
-                <img class="image-no-item" src="assets/img/empty-folder.png" />
-              </div>
-            </ul>
-          </div>
-          <div class="footer">
-            <ul class="list-items">
-              <li
-                class="item btn action-logo"
-                data-type="select_null"
-                data-id="null"
-              >
-                <a>
-                  <div class="icon-item">
-                    <div class="main-icon icon icon-trash"></div>
-                  </div>
-                  <span class="title-item">Desligar tudo</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div id="lowers" class="lowers">
-          <div class="header-section">
-            <div class="infos-header">
-              <h2 class="title">Seus títulos</h2>
-              <span class="description"
-                >Adicione, remova ou use seu títulos.</span
+                <div id="lowers" class="lowers">
+                    <div class="header-section">
+                        <div class="infos-header">
+                            <h2 class="title">Seus títulos</h2>
+                            <span class="description">Adicione, remova ou use seu títulos.</span
               >
             </div>
             <button
@@ -185,59 +173,45 @@
             >
               <div class="main-icon icon icon-plus"></div>
               <span>ADICIONAR</span>
-            </button>
-          </div>
-          <div class="modal" id="modal-lower">
-            <form id="lower-form" class="lower-form">
-              <div class="header">
-                <h2>Novo título</h2>
-              </div>
-              <div class="main">
-                <input
-                  type="text"
-                  name="title"
-                  placeholder="Título"
-                  class="title"
-                  required
-                />
-                <input
-                  type="text"
-                  name="description"
-                  placeholder="Descrição"
-                  class="description"
-                  required
-                />
-              </div>
-              <div class="footer">
-                <div class="actions">
-                  <button class="action" type="submit">
+                            </button>
+                        </div>
+                        <div class="modal" id="modal-lower">
+                            <form id="lower-form" class="lower-form">
+                                <div class="header">
+                                    <h2>Novo título</h2>
+                                </div>
+                                <div class="main">
+                                    <input type="text" name="title" placeholder="Título" class="title" required />
+                                    <input type="text" name="description" placeholder="Descrição" class="description" required />
+                                </div>
+                                <div class="footer">
+                                    <div class="actions">
+                                        <button class="action" type="submit">
                     <span>Criar e sair</span>
                   </button>
-                  <button
-                    class="action close-modal-function"
-                    type="button"
-                    data-id="modal-lower"
-                  >
+                                        <button class="action close-modal-function" type="button" data-id="modal-lower">
                     <span>Sair sem criar</span>
                   </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <ul id="row-lower" class="row">
+                            <div class="no-item">
+                                <h2 class="title-no-item">Nenhum título<br />encontrado</h2>
+                                <img class="image-no-item" src="assets/img/empty-folder.png" />
+                            </div>
+                        </ul>
+                    </div>
                 </div>
-              </div>
-            </form>
-          </div>
-          <ul id="row-lower" class="row">
-            <div class="no-item">
-              <h2 class="title-no-item">Nenhum título<br />encontrado</h2>
-              <img class="image-no-item" src="assets/img/empty-folder.png" />
-            </div>
-          </ul>
-        </div>
-      </div>
     </main>
     <script src="assets/js/bc.crud.js"></script>
     <script src="assets/js/bc.channel.js"></script>
     <script src="assets/js/bc.logo.js"></script>
     <script src="assets/js/bc.lower.js"></script>
+    <script src="assets/js/bc.news.js"></script>
     <script src="assets/js/bc.identidade.js"></script>
     <script src="assets/js/theme.functions.js"></script>
-  </body>
+</body>
+
 </html>
