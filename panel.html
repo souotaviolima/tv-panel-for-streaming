@@ -61,19 +61,18 @@
         <div id="header" class="header">
           <div class="content-header">
             <div class="item-header">
-              <div id="identidade-header" class="content">
-                <div class="no-item">
-                  <h2 class="title-no-item">Nenhuma identidade definida</h2>
-                  <button
-                    class="btn btn-secundary large open-modal-function"
-                    data-id="modal-identidade"
-                  >
-                    <span>Selecionar imagem</span>
-                  </button>
-                </div>
+              <div class="no-item">
+                <h2 class="title-no-item">Nenhuma identidade definida</h2>
+                <button
+                  class="btn btn-secundary large open-modal-function"
+                  data-id="modal-identidade"
+                >
+                  <span>Selecionar imagem</span>
+                </button>
               </div>
+              <div id="identidade-header" class="content"></div>
             </div>
-
+        
             <div class="item-header">
               <div class="actions">
                 <h3 style="color: aliceblue">News</h3>
@@ -88,13 +87,20 @@
               </div>
             </div>
           </div>
+        
           <div class="modal" id="modal-identidade">
             <form id="dentidade-form" class="idvisual-form">
               <div class="header">
                 <h2>Nova identidade visual</h2>
               </div>
+        
               <div class="main">
-                <input type="file" name="image" required />
+                <!-- Imagem principal -->
+                <label>Imagem principal:</label>
+                <input type="file" name="image" accept="image/*" required />
+        
+                <!-- Cor principal -->
+                <label>Cor principal:</label>
                 <input
                   type="text"
                   name="color"
@@ -102,7 +108,47 @@
                   class="color"
                   required
                 />
+        
+                <!-- Cor da tag -->
+                <label>Cor da tag:</label>
+                <input
+                  type="text"
+                  name="tagColor"
+                  placeholder="Cor da tag Ex.: #FF0000"
+                  class="color"
+                  required
+                />
+        
+                <!-- Cor da headline -->
+                <label>Cor da headline:</label>
+                <input
+                  type="text"
+                  name="headlineColor"
+                  placeholder="Cor da headline Ex.: #00FF00"
+                  class="color"
+                  required
+                />
+        
+                <!-- Cor da subheadline -->
+                <label>Cor da subheadline:</label>
+                <input
+                  type="text"
+                  name="subheadlineColor"
+                  placeholder="Cor da subheadline Ex.: #0000FF"
+                  class="color"
+                  required
+                />
+        
+                <!-- Imagem da headline -->
+                <label>Imagem da headline:</label>
+                <input
+                  type="file"
+                  name="headlineImage"
+                  accept="image/*"
+                  required
+                />
               </div>
+        
               <div class="footer">
                 <div class="actions">
                   <button class="action" type="submit">
@@ -120,6 +166,9 @@
             </form>
           </div>
         </div>
+        
+
+        
         <div id="logos" class="logos">
           <div class="header-section">
             <div class="infos-header">

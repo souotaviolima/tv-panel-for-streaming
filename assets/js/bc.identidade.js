@@ -2,9 +2,11 @@
   const container = document.getElementById("identidade-header");
 
   const escapeHTML = (str) =>
-    str.replace(/&/g, "&amp;")
-       .replace(/</g, "&lt;")
-       .replace(/>/g, "&gt;");
+    String(str || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  
 
   const renderIdentidades = (items) => {
     if (!container) return;
@@ -44,15 +46,16 @@
     const data = Object.fromEntries(formData);
 
     const newIdentidade = {
-      color: data.color,
-      image: data.image.name
+      image: data.image.name,
+      tagColor: data.tagColor,
+      headlineColor: data.headlineColor,
+      subheadlineColor: data.subheadlineColor,
+      headlineImage: data.headlineImage.name
     };
 
-    const current = toGetStorages("identidade");
-    if (newIdentidade && current.length < 1) {
-      const result = toCreateStorage("identidade", newIdentidade, "create");
-      if (result) renderIdentidades(result);
-    }
+    const result = toCreateStorage("identidade", newIdentidade, "create");
+
+    if (result) renderIdentidades(result);
 
     e.target.reset();
   });
@@ -64,21 +67,16 @@
     if (updated) renderIdentidades(updated);
   });
 
+  // Marcar múltiplas identidades
   $(document).on("change", ".select-dentidade-item", function () {
-    const id = this.getAttribute("data-id");
-  
-    if (this.checked) {
-      // Desmarcar todos os outros
-      $(".select-dentidade-item").not(this).prop("checked", false);
-  
-      // Enviar item selecionado
-      const selected = toGetStorage(id, "identidade", "select");
-      toSendFront("identidade", selected, "identidade", true);
-    } else {
-      // Se o usuário desmarcar o item, limpa tudo
-      toSendFront("identidade", [], "identidade", false);
-    }
+    const checkboxes = $(".select-dentidade-item:checked");
+
+    const selected = Array.from(checkboxes).map(cb => {
+      const id = cb.getAttribute("data-id");
+      return toGetStorage(id, "identidade", "select");
+    });
+
+    toSendFront("identidade", selected, "identidade", !!selected.length);
   });
-  
 
 })();

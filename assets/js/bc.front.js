@@ -63,7 +63,10 @@ function renderLower(status, payload) {
   console.log(status);
   if (!banner || !container || !title || !subtitle || !tag) return;
 
-  const color = payload?.[0]?.identidade?.[0]?.color;
+  const { tagColor, headlineColor, subheadlineColor, headlineImage } =
+    payload?.[0]?.identidade?.[0];
+
+    console.log(payload?.[0]?.identidade?.[0]);
   const newTitle = payload?.[0]?.title;
   const newSubtitle = payload?.[0]?.subtitle;
   const newTag = payload?.[0]?.tag;
@@ -74,7 +77,9 @@ function renderLower(status, payload) {
     title.textContent = newTitle;
     subtitle.textContent = newSubtitle;
 
-    title.style.backgroundColor = color;
+    tag.style.backgroundColor = tagColor;
+    title.style.backgroundColor = headlineColor;
+    subtitle.style.backgroundColor = subheadlineColor;
 
     //container.classList.add("animated-in");
     banner.classList.add("animated-in");
@@ -91,8 +96,9 @@ function renderLower(status, payload) {
       title.textContent = newTitle;
       subtitle.textContent = newSubtitle;
 
-      //tag.style.backgroundColor = color;
-      title.style.backgroundColor = color;
+      tag.style.backgroundColor = tagColor;
+      title.style.backgroundColor = headlineColor;
+      subtitle.style.backgroundColor = subheadlineColor;
 
       //container.classList.remove("animated-out");
       banner.classList.remove("animated-out");
@@ -108,8 +114,6 @@ function renderLower(status, payload) {
 
   container.classList.remove("animated-in");
   container.classList.add("animated-out");
-
-
 }
 
 function renderNews(status, payload) {
