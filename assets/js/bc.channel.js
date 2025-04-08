@@ -1,9 +1,16 @@
 const bc = new BroadcastChannel("frontChannel");
-function toSendFront(n, t, a, o) {
+
+function toSendFront(name, data, type, status) {
   try {
-    var e = { name: n, data: t, type: a, status: o };
-    bc.postMessage(e);
-  } catch (n) {
-    console.log(n);
+    const payload = {
+      name,
+      data,
+      type,
+      status,
+    };
+
+    bc.postMessage(payload);
+  } catch (error) {
+    console.error("Erro ao enviar via BroadcastChannel:", error);
   }
 }

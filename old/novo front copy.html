@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Chamada Estilo Jornal</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Arial Black', Arial, sans-serif;
+      background: white;
+    }
+
+    .wrapper {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+    }
+
+    .lower {
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Slide da chamada toda */
+    .animated-in-lower {
+      animation: slideInUp 0.7s ease forwards;
+    }
+
+    .animated-out-lower {
+      animation: slideOutDown 0.7s ease forwards;
+    }
+
+    @keyframes slideInUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideOutDown {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(100%); opacity: 0; }
+    }
+
+    @keyframes growLeftToRight {
+      from {
+        transform: scaleX(0);
+        transform-origin: left;
+        opacity: 0;
+      }
+      to {
+        transform: scaleX(1);
+        transform-origin: left;
+        opacity: 1;
+      }
+    }
+
+    /* Aplicação condicional das animações */
+    .animated-in-lower .categoria,
+    .animated-in-lower .titulo,
+    .animated-in-lower .subtitulo,
+    .animated-in-lower .linha3 {
+      transform: scaleX(0);
+      animation: growLeftToRight 0.5s ease forwards;
+    }
+
+    .animated-in-lower .categoria   { animation-delay: 0.2s; }
+    .animated-in-lower .titulo      { animation-delay: 0.4s; }
+    .animated-in-lower .subtitulo   { animation-delay: 0.6s; }
+    .animated-in-lower .linha3      { animation-delay: 0.8s; }
+
+    .bloco1 {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .categoria {
+      background-color: #5A5A5A;
+      color: white;
+      padding: 6px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      width: fit-content;
+    }
+
+    .titulo {
+      background-color: #7A0000;
+      color: white;
+      padding: 10px 20px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .linha2 {
+      display: flex;
+      height: 40px;
+    }
+
+    .subtitulo {
+      background-color: #1A1A1A;
+      color: white;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .aovivo {
+      background-color: #0000CC;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 0 15px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .aovivo img {
+      height: 28px;
+      margin-right: 8px;
+    }
+
+    .shine {
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { text-shadow: none; }
+      50% { text-shadow: 0 0 10px white, 0 0 20px white; }
+      100% { text-shadow: none; }
+    }
+
+    .linha3 {
+      background-color: #A0A0A0;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      overflow: hidden;
+      position: relative;
+      height: 30px;
+    }
+
+    .marquee {
+      position: absolute;
+      white-space: nowrap;
+      will-change: transform;
+      animation: scroll-left 15s linear infinite;
+      padding-left: 100%;
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="lower">
+      <div class="animated-in-lower">
+        <!-- LINHA 1 -->
+        <div class="bloco1">
+          <div class="categoria">FESTA BRASIL</div>
+          <div class="titulo">O MAIOR SÃO JOÃO DO BRASIL</div>
+        </div>
+
+        <!-- LINHA 2 -->
+        <div class="linha2">
+          <div class="subtitulo">PREFEITURA ESTÁ A TODO VAPOR</div>
+          <div class="aovivo">
+            <img src="https://i.imgur.com/SqWh6Be.png" alt="Logo 87.9">
+            <span class="shine">AO VIVO</span>
+          </div>
+        </div>
+
+        <!-- LINHA 3 -->
+        <div class="linha3">
+          <div class="marquee">
+            ACOMPANHE A RÁDIO EM EXECUTIVAFM.COM.BR - MAIS TARDE O PROGRAMA ACORDA CID
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

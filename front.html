@@ -1,129 +1,258 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
+<html lang="pt-BR">
+  <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Browser - Utilitário de transmissão</title>
-    <link rel="stylesheet" href="assets/css/styles.reset.css" />
-    <link rel="stylesheet" href="assets/css/styles.front.css" />
-    <link rel="stylesheet" href="assets/css/styles.news.css" />
-</head>
+    <title>Chamada Estilo Jornal</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
 
-<body>
-    <div class="container">
-        <div class="content">
-            <div id="identidade" class="identidade"></div>
+      body {
+        margin: 0;
+        font-family: "Arial Black", Arial, sans-serif;
+        background: white;
+      }
+
+      .wrapper {
+        position: fixed;
+        bottom: 5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 81%;
+      }
+
+      .banner {
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .banner.animated-in {
+        animation: slideInUp 0.7s ease forwards;
+      }
+
+      .banner.animated-out {
+        animation: slideOutDown 0.7s ease forwards;
+      }
+
+      @keyframes slideInUp {
+        from {
+          transform: translateY(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideOutDown {
+        from {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateY(100%);
+          opacity: 0;
+        }
+      }
+
+      @keyframes growLeftToRight {
+        from {
+          transform: scaleX(0);
+          transform-origin: left;
+          opacity: 0;
+        }
+        to {
+          transform: scaleX(1);
+          transform-origin: left;
+          opacity: 1;
+        }
+      }
+
+      .banner.animated-in .tag,
+      .banner.animated-in .headline,
+      .banner.animated-in .subheadline,
+      .banner.animated-in .ticker {
+        transform: scaleX(0);
+        animation: growLeftToRight 0.5s ease forwards;
+      }
+
+      .banner.animated-in .tag {
+        animation-delay: 0.2s;
+      }
+      .banner.animated-in .headline {
+        animation-delay: 0.4s;
+      }
+      .banner.animated-in .subheadline {
+        animation-delay: 0.6s;
+      }
+      .banner.animated-in .ticker {
+        animation-delay: 0.8s;
+      }
+
+      .banner__top {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .tag {
+        background-color: #5a5a5a;
+        color: white;
+        padding: 6px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        width: fit-content;
+      }
+
+      .headline {
+        color: white;
+        padding: 10px 20px;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .banner__middle {
+        display: flex;
+        height: 40px;
+        margin-bottom: 2px;
+      }
+
+      .subheadline {
+        background-color: #1a1a1a;
+        color: white;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        font-size: 18px;
+        font-weight: bold;
+        width: 100%;
+      }
+
+      .live-tag {
+        background-color: #0000cc;
+        color: white;
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .live-tag img {
+        height: 28px;
+        margin-right: 8px;
+      }
+
+      .shine {
+        animation: shine 3s infinite;
+      }
+
+      @keyframes shine {
+        0% {
+          text-shadow: none;
+        }
+        50% {
+          text-shadow: 0 0 10px white, 0 0 20px white;
+        }
+        100% {
+          text-shadow: none;
+        }
+      }
+
+      .ticker {
+        background-color: #a0a0a0;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        overflow: hidden;
+        position: relative;
+        height: 30px;
+      }
+
+      .marquee {
+        position: absolute;
+        white-space: nowrap;
+        will-change: transform;
+        animation: scroll-left 15s linear infinite;
+        padding-left: 100%;
+      }
+
+      @keyframes scroll-left {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      /* LIVE FIXO */
+      .cg-container .live-fixed {
+        display: none;
+        align-self: flex-end;
+        color: white;
+        padding: 8px 15px;
+        font-size: 18px;
+        font-weight: bold;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .cg-container .live-fixed.animated-out {
+        display: none;
+      }
+
+      .cg-container .live-fixed.animated-in {
+        display: flex;
+      }
+
+      .live-fixed img {
+        height: 28px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="cg-container">
+        <!-- AO VIVO FIXO -->
+        <div id="logo" class="live-fixed animated-out">
+          <span class="shine">AO VIVO</span>
         </div>
-        <div class="content">
-            <div class="identidade-lower-logo">
-                <div id="lower" class="lower">
-                    <div class="item">
-                        <div class="lower-header">
-                            <div id="lower-title" class="lower-title"></div>
-                        </div>
-                        <div class="lower-content">
-                            <div id="lower-bar" class="lower-bar"></div>
-                            <div id="lower-subtitle" class="lower-subtitle"></div>
-                        </div>
-                    </div>
-                </div>
-                <div id="logo" class="logo">
-                    <div class="logo-container">
-                        <div id="logo-title" class="logo-title"></div>
-                        <div id="logo-image" class="logo-image"></div>
-                    </div>
-                </div>
+
+        <!-- BANNER PRINCIPAL -->
+        <div id="lower" class="lower banner animated-out">
+          <div class="banner__top">
+            <div id="tag" class="tag">FESTA BRASIL</div>
+            <div id="headline" class="headline">O MAIOR SÃO JOÃO DO BRASIL</div>
+          </div>
+          <div class="banner__middle">
+            <div id="subheadline" class="subheadline">
+              PREFEITURA ESTÁ A TODO VAPOR
             </div>
-            <div id="news" class="news">
-                <div id="sliders-logo" class="sliders-logo">NEWS.RBMIDIA.COM</div>
-                <ul id="sliders-news" class="sliders-news"></ul>
+            <div id="live-tag" class="live-tag">
+              <div id="logo" class="logo">
+                <div class="logo-container">
+                  <div id="logo-title" class="logo-title"></div>
+                  <div id="logo-image" class="logo-image"></div>
+                </div>
+              </div>
+              <span class="shine">AO VIVO</span>
             </div>
+          </div>
+          <div class="ticker">
+            <div class="marquee">
+              ACOMPANHE A RÁDIO EM EXECUTIVAFM.COM.BR - MAIS TARDE O PROGRAMA
+              ACORDA CID
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</body>
-<script src="assets/js/jquery.min.js"></script>
-<script>
-    const bc = new BroadcastChannel("frontChannel");
-    bc.onmessage = (t) => {
-        if ("identidade" === t.data.type) {
-            const a = document.getElementById("identidade");
-            t.data.status ?
-                (a.classList.add("animated-in-identidade"),
-                    a.classList.remove("animated-out-identidade"),
-                    (a.innerHTML =
-                        '<div class="identidade-content"><img src="images/' +
-                        t.data.data[0].image +
-                        '"/></div>')) :
-                (a.classList.remove("animated-in-identidade"),
-                    a.classList.add("animated-out-identidade"));
-        }
-        if ("logo" === t.data.type) {
-            var a = document.getElementById("logo"),
-                e = document.getElementById("logo-image"),
-                d = document.getElementById("logo-title");
-            t.data.status ?
-                (a.classList.add("animated-in-logo"),
-                    a.classList.remove("animated-out-logo"),
-                    (e.innerHTML =
-                        '<img height="100px" src="images/' + t.data.data[0].image + '"/>'),
-                    (d.innerHTML = "<h3>" + t.data.data[0].title + "<h3>")) :
-                (a.classList.remove("animated-in-logo"),
-                    a.classList.add("animated-out-logo"));
-        }
-        if ("lower" === t.data.type) {
-            var i = document.getElementById("lower"),
-                o = document.getElementById("lower-title"),
-                n = document.getElementById("lower-subtitle"),
-                s = document.getElementById("lower-bar");
-            t.data.status ?
-                (i.classList.remove("animated-out-lower"),
-                    i.classList.remove("animated-in-lower"),
-                    setTimeout(function() {
-                        i.classList.add("animated-in-lower");
-                    }, 500),
-                    (o.style.backgroundColor = t.data.data[0].identidade[0].color ?
-                        t.data.data[0].identidade[0].color :
-                        "#052b96"),
-                    (s.style.backgroundColor = t.data.data[0].identidade[0].color ?
-                        t.data.data[0].identidade[0].color :
-                        "#052b96"),
-                    (o.innerHTML = "<h2>" + t.data.data[0].title + "</h2>"),
-                    (n.innerHTML = "<h3>" + t.data.data[0].subtitle + "</h3>")) :
-                (i.classList.add("animated-out-lower"),
-                    i.classList.remove("animated-in-lower"));
-        }
-        if ("news" === t.data.type) {
-            var a = document.getElementById("news"),
-                i = document.getElementById("sliders-news");
-
-            t.data.status ?
-                (a.classList.remove("animated-out-news"),
-                    setTimeout(function() {
-                        a.classList.add("animated-in-news");
-                    }, 5000),
-                    t.data.data.map(function(author) {
-                        let span = document.createElement("li");
-                        span.innerHTML = `${author.title.rendered}`;
-                        i.appendChild(span);
-                    }),
-                    ((sliders = document.querySelectorAll("#sliders-news li")),
-                        (current = 0),
-                        (total = sliders.length - 1)),
-                    window.setInterval(function() {
-                        var index = current ? current - 1 : total;
-                        sliders[index].className = "";
-                        sliders[current].className = "slider-news-active";
-                        current = current >= total ? 0 : current + 1;
-                    }, 5000)) :
-                (a.classList.add("animated-out-news"),
-                    a.classList.remove("animated-in-news"),
-                    (i.innerHTML = ""));
-        }
-    };
-</script>
-<script src="assets/js/bc.image.js"></script>
-<script src="assets/js/bc.lower.js"></script>
-
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bc.front.js"></script>
+  </body>
 </html>

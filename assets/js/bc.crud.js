@@ -1,40 +1,43 @@
-function toCreateStorage(t, e, o) {
+function toCreateStorage(key, data, type) {
   try {
-    var r = localStorage.getItem(t) ? JSON.parse(localStorage.getItem(t)) : [];
-    if (r) {
-      e.id = Math.random().toString(36).slice(2);
-      var a = [...r, e];
-      return localStorage.setItem(t, JSON.stringify(a)), a;
-    }
-    return localStorage.setItem(t, a), a;
-  } catch (t) {
-    console.log(t);
+    const current = JSON.parse(localStorage.getItem(key)) || [];
+    const newItem = { ...data, id: Math.random().toString(36).slice(2) };
+    const updated = [...current, newItem];
+    localStorage.setItem(key, JSON.stringify(updated));
+    return updated;
+  } catch (err) {
+    console.error("Erro ao criar storage:", err);
+    return [];
   }
 }
-function toGetStorages(t) {
+
+function toGetStorages(key) {
   try {
-    var e = localStorage.getItem(t) ? JSON.parse(localStorage.getItem(t)) : [];
-    if (e) return e;
-  } catch (t) {
-    console.log(t);
+    return JSON.parse(localStorage.getItem(key)) || [];
+  } catch (err) {
+    console.error("Erro ao obter storages:", err);
+    return [];
   }
 }
-function toGetStorage(t, e, o) {
+
+function toGetStorage(id, key, type) {
   try {
-    var r = localStorage.getItem(e) ? JSON.parse(localStorage.getItem(e)) : [];
-    if ((r = r.filter((e) => e.id === t))) return r;
-  } catch (t) {
-    console.log(t);
+    const list = JSON.parse(localStorage.getItem(key)) || [];
+    return list.filter(item => item.id === id);
+  } catch (err) {
+    console.error("Erro ao obter storage:", err);
+    return [];
   }
 }
-function toDeleteStorage(t, e, o) {
+
+function toDeleteStorage(id, key, type) {
   try {
-    var r = localStorage.getItem(e) ? JSON.parse(localStorage.getItem(e)) : [];
-    if ((r = r.filter((e) => e.id !== t))) {
-      var a = JSON.stringify(r);
-      return localStorage.setItem(e, a), r;
-    }
-  } catch (t) {
-    console.log(t);
+    const list = JSON.parse(localStorage.getItem(key)) || [];
+    const updated = list.filter(item => item.id !== id);
+    localStorage.setItem(key, JSON.stringify(updated));
+    return updated;
+  } catch (err) {
+    console.error("Erro ao deletar storage:", err);
+    return [];
   }
 }

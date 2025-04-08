@@ -254,18 +254,12 @@
     background-image: url("../img/texture.png");
     background-position: initial;
     padding: 7px;
-    box-shadow: 0px 0px 3px 3px #99999914;
-    border-radius: 25px 5px 25px 0px;
     padding: 10px 0px;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-style: solid;
     border-image: linear-gradient(to left, #00000063, transparent) 1;
 }
 
 .lower .lower-header {
     position: relative;
-    top: 20px;
     z-index: 999;
 }
 
@@ -274,7 +268,7 @@
     font-size: 1.9vw;
     font-weight: 900;
     color: #ffffff;
-    padding: 0px 30px 0px 39px;
+    padding: 0px 30px 0px 30px;
     text-shadow: 2px 1px #00000061;
 }
 
@@ -289,7 +283,6 @@
     overflow: hidden;
     z-index: 9999;
     position: relative;
-    border-radius: 0px 10px;
     z-index: 99;
 }
 
@@ -299,15 +292,13 @@
     background: #fffffff5;
     box-shadow: 2px 4px 3px 3px #9999990a;
     z-index: 9999;
-    backdrop-filter: blur(13px);
-    border-radius: 20px 0;
 }
 
 .lower .lower-content h3 {
     font-family: sans-serif;
     font-size: 1.6vw;
     color: #000000;
-    margin: 24px 50px 5px;
+    margin: 0 50px 5px;
 }
 
 .lower.animated-in-lower .lower-bar {
