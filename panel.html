@@ -6,149 +6,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Painel - Utilitário de transmissão</title>
     <link rel="stylesheet" href="assets/css/styles.panel.css" />
+    <link rel="stylesheet" href="assets/css/styles.news.css" />
     <link rel="stylesheet" href="assets/css/styles.icons.css" />
     <script src="assets/js/jquery.min.js"></script>
   </head>
-
   <body>
-    <header>
-      <div class="container">
-        <nav class="navigator">
-          <ul class="row">
-            <li class="nav-item">
-              <a href="#">
-                <div
-                  class="main-icon icon icon-settings open-modal-function"
-                  data-id="modal-config"
-                ></div>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="select-news-item">
-                <div class="main-icon icon icon-settings"></div>
-              </a>
-            </li>
-          </ul>
-          <div class="modal" id="modal-config">
-            <div class="configs">
-              <div class="header">
-                <h2>Configurações</h2>
-              </div>
-              <div class="main">
-                <div id="row-colors" class="row-control"></div>
-                <button class="clear-data-function">
-                  Apagar todos os dados
-                </button>
-              </div>
-              <div class="footer">
-                <div class="actions">
-                  <button
-                    class="action close-modal-function"
-                    type="button"
-                    data-id="modal-config"
-                  >
-                    <span>Sair</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
     <main>
       <div class="container">
         <div id="header" class="header">
-          <div class="content-header">
-            <div class="item-header">
-              <div class="no-item">
-                <h2 class="title-no-item">Nenhuma identidade definida</h2>
-                <button
-                  class="btn btn-secundary large open-modal-function"
-                  data-id="modal-identidade"
-                >
-                  <span>Selecionar imagem</span>
-                </button>
-              </div>
-              <div id="identidade-header" class="content"></div>
+          <div class="header-section">
+            <div class="infos-header">
+              <h2 class="title">Identidade</h2>
+              <span class="description"
+                >Adicione, remova ou use identidades.</span
+              >
             </div>
-        
-            <div class="item-header">
-              <div class="actions">
-                <h3 style="color: aliceblue">News</h3>
-                <label class="action toggle-lower switch" style="width: 48px">
-                  <input
-                    type="checkbox"
-                    class="select-news-item"
-                    data-type="select"
-                  />
-                  <span class="slider round" style="right: 22px"></span>
-                </label>
-              </div>
-            </div>
+            <button
+              class="btn btn-primary large open-modal-function"
+              data-id="modal-identidade"
+            >
+              <div class="main-icon icon icon-plus"></div>
+              <span>ADICIONAR</span>
+            </button>
           </div>
-        
+          <div class="content">
+            <div id="identidade-header" class="content"></div>
+          </div>
           <div class="modal" id="modal-identidade">
             <form id="dentidade-form" class="idvisual-form">
               <div class="header">
                 <h2>Nova identidade visual</h2>
               </div>
-        
+
               <div class="main">
-                <!-- Imagem principal -->
-                <label>Imagem principal:</label>
-                <input type="file" name="image" accept="image/*" required />
-        
                 <!-- Cor principal -->
                 <label>Cor principal:</label>
                 <input
                   type="text"
-                  name="color"
+                  name="primary"
                   placeholder="Cor Ex.: #000000"
                   class="color"
                   required
                 />
-        
+
                 <!-- Cor da tag -->
                 <label>Cor da tag:</label>
                 <input
                   type="text"
-                  name="tagColor"
+                  name="secondary"
                   placeholder="Cor da tag Ex.: #FF0000"
                   class="color"
                   required
                 />
-        
+
                 <!-- Cor da headline -->
                 <label>Cor da headline:</label>
                 <input
                   type="text"
-                  name="headlineColor"
+                  name="tertiary"
                   placeholder="Cor da headline Ex.: #00FF00"
                   class="color"
                   required
                 />
-        
-                <!-- Cor da subheadline -->
+
                 <label>Cor da subheadline:</label>
                 <input
                   type="text"
-                  name="subheadlineColor"
+                  name="quaternary"
                   placeholder="Cor da subheadline Ex.: #0000FF"
                   class="color"
                   required
                 />
-        
-                <!-- Imagem da headline -->
-                <label>Imagem da headline:</label>
-                <input
-                  type="file"
-                  name="headlineImage"
-                  accept="image/*"
-                  required
-                />
               </div>
-        
+
               <div class="footer">
                 <div class="actions">
                   <button class="action" type="submit">
@@ -157,7 +87,7 @@
                   <button
                     class="action close-modal-function"
                     type="button"
-                    data-id="modal-visualid"
+                    data-id="modal-identidade"
                   >
                     <span>Sair sem criar</span>
                   </button>
@@ -166,9 +96,7 @@
             </form>
           </div>
         </div>
-        
 
-        
         <div id="logos" class="logos">
           <div class="header-section">
             <div class="infos-header">
@@ -240,6 +168,7 @@
             </ul>
           </div>
         </div>
+
         <div id="lowers" class="lowers">
           <div class="header-section">
             <div class="infos-header">
@@ -301,6 +230,59 @@
             </form>
           </div>
           <ul id="row-lower" class="row">
+            <div class="no-item">
+              <h2 class="title-no-item">Nenhum título<br />encontrado</h2>
+              <img class="image-no-item" src="assets/img/empty-folder.png" />
+            </div>
+          </ul>
+        </div>
+        <div id="news" class="news">
+          <div class="header-section">
+            <div class="infos-header">
+              <h2 class="title">Notícias de rodapé</h2>
+              <span class="description"
+                >Adicione, remova ou use seu títulos.</span
+              >
+            </div>
+            <button
+              class="btn btn-primary large open-modal-function"
+              data-id="modal-news"
+            >
+              <div class="main-icon icon icon-plus"></div>
+              <span>ADICIONAR</span>
+            </button>
+          </div>
+          <div class="modal" id="modal-news">
+            <form id="news-form" class="news-form">
+              <div class="header">
+                <h2>Nova notícia</h2>
+              </div>
+              <div class="main">
+                <input
+                  type="text"
+                  name="news"
+                  placeholder="Texto"
+                  class="title"
+                  required
+                />
+              </div>
+              <div class="footer">
+                <div class="actions">
+                  <button class="action" type="submit">
+                    <span>Criar e sair</span>
+                  </button>
+                  <button
+                    class="action close-modal-function"
+                    type="button"
+                    data-id="modal-news"
+                  >
+                    <span>Sair sem criar</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <ul id="row-news" class="row">
             <div class="no-item">
               <h2 class="title-no-item">Nenhum título<br />encontrado</h2>
               <img class="image-no-item" src="assets/img/empty-folder.png" />

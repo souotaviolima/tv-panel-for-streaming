@@ -5,7 +5,7 @@
 
     container.innerHTML = items.map((item, index) => {
       const count = index + 1;
-      const color = item.identidade?.[0]?.color || "#ccc";
+      const color = item.identidade?.[0]?.primary || "#ccc";
 
       return `
         <li id="${item.id}" class="lower item">

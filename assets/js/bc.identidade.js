@@ -6,28 +6,32 @@
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;");
-  
 
   const renderIdentidades = (items) => {
     if (!container) return;
 
-    container.innerHTML = items.map(item => `
-      <div class="image-preview">
-        <img id="${item.id}" src="images/${escapeHTML(item.image)}" class="image" />
-      </div>
+    container.innerHTML = items
+      .map(
+        (item) => `
       <div class="color-preview">
-        <span class="color" style="background-color: ${escapeHTML(item.color)}"></span>
+        <span class="color" style="background-color: ${escapeHTML(
+          item.primary
+        )}"></span>
       </div>
       <div class="actions">
         <a class="action remove-dentidade-item" data-id="${item.id}">
           <div class="main-icon icon icon-trash"></div>
         </a>
         <label class="action toggle-lower switch">
-          <input type="checkbox" class="select-dentidade-item" data-id="${item.id}" />
+          <input type="checkbox" class="select-dentidade-item" data-id="${
+            item.id
+          }" />
           <span class="slider round"></span>
         </label>
       </div>
-    `).join("");
+    `
+      )
+      .join("");
   };
 
   const refreshIdentidades = () => {
@@ -46,11 +50,10 @@
     const data = Object.fromEntries(formData);
 
     const newIdentidade = {
-      image: data.image.name,
-      tagColor: data.tagColor,
-      headlineColor: data.headlineColor,
-      subheadlineColor: data.subheadlineColor,
-      headlineImage: data.headlineImage.name
+      primary: data.primary,
+      secondary: data.secondary,
+      tertiary: data.tertiary,
+      quaternary: data.quaternary,
     };
 
     const result = toCreateStorage("identidade", newIdentidade, "create");
@@ -71,12 +74,11 @@
   $(document).on("change", ".select-dentidade-item", function () {
     const checkboxes = $(".select-dentidade-item:checked");
 
-    const selected = Array.from(checkboxes).map(cb => {
+    const selected = Array.from(checkboxes).map((cb) => {
       const id = cb.getAttribute("data-id");
       return toGetStorage(id, "identidade", "select");
     });
 
     toSendFront("identidade", selected, "identidade", !!selected.length);
   });
-
 })();

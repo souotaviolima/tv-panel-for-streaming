@@ -46,8 +46,16 @@ function renderLogo(status, payload) {
   if (status) {
     container.classList.add("animated-in-logo");
     container.classList.remove("animated-out-logo");
-    img.innerHTML = `<img height="100px" src="images/${payload[0].image}"/>`;
-    title.innerHTML = `<h3>${payload[0].title}</h3>`;
+
+    if (payload[0].image && payload[0].title) {
+      title.innerHTML = `<img height="100px" src="images/${payload[0].image}"/>`;
+    } else if (payload[0].image) {
+      title.innerHTML = `<img height="100px" src="images/${payload[0].image}"/>`;
+    } else if (payload[0].title) {
+      title.innerHTML = `<h3>${payload[0].title}</h3>`;
+    } else {
+      title.innerHTML = ""; // ou um fallback
+    }
   } else {
     container.classList.remove("animated-in-logo");
     container.classList.add("animated-out-logo");
@@ -60,13 +68,12 @@ function renderLower(status, payload) {
   const title = document.getElementById("headline");
   const subtitle = document.getElementById("subheadline");
   const tag = document.getElementById("tag");
-  console.log(status);
+
   if (!banner || !container || !title || !subtitle || !tag) return;
 
-  const { tagColor, headlineColor, subheadlineColor, headlineImage } =
+  const { primary, secondary, tertiary, quaternary } =
     payload?.[0]?.identidade?.[0];
 
-    console.log(payload?.[0]?.identidade?.[0]);
   const newTitle = payload?.[0]?.title;
   const newSubtitle = payload?.[0]?.subtitle;
   const newTag = payload?.[0]?.tag;
@@ -77,9 +84,9 @@ function renderLower(status, payload) {
     title.textContent = newTitle;
     subtitle.textContent = newSubtitle;
 
-    tag.style.backgroundColor = tagColor;
-    title.style.backgroundColor = headlineColor;
-    subtitle.style.backgroundColor = subheadlineColor;
+    title.style.backgroundColor = primary;
+    subtitle.style.backgroundColor = secondary;
+    tag.style.backgroundColor = tertiary;
 
     //container.classList.add("animated-in");
     banner.classList.add("animated-in");
@@ -96,9 +103,9 @@ function renderLower(status, payload) {
       title.textContent = newTitle;
       subtitle.textContent = newSubtitle;
 
-      tag.style.backgroundColor = tagColor;
-      title.style.backgroundColor = headlineColor;
-      subtitle.style.backgroundColor = subheadlineColor;
+      title.style.backgroundColor = primary;
+      subtitle.style.backgroundColor = secondary;
+      tag.style.backgroundColor = tertiary;
 
       //container.classList.remove("animated-out");
       banner.classList.remove("animated-out");
@@ -117,33 +124,39 @@ function renderLower(status, payload) {
 }
 
 function renderNews(status, payload) {
-  const news = document.getElementById("news");
-  const slider = document.getElementById("sliders-news");
-  if (!news || !slider) return;
+  const newsElement = document.getElementById("news");
+  const newsContainer = newsElement?.parentElement;
+  const marquee = document.getElementById("marquee");
 
-  if (status) {
-    news.classList.remove("animated-out-news");
-    setTimeout(() => news.classList.add("animated-in-news"), 5000);
+  if (!newsElement || !newsContainer || !marquee) return;
 
-    payload.forEach((post) => {
-      const li = document.createElement("li");
-      li.innerHTML = post.title.rendered;
-      slider.appendChild(li);
-    });
+  const news = payload?.[0]?.news;
 
-    let sliders = document.querySelectorAll("#sliders-news li");
-    let current = 0;
-    let total = sliders.length - 1;
+  if (!status) {
+    // Primeira exibição direta
+    marquee.textContent = news;
+    newsElement.classList.add("animated-in");
+    newsContainer.classList.add("animated-in");
 
-    window.setInterval(() => {
-      let prev = current ? current - 1 : total;
-      sliders[prev].className = "";
-      sliders[current].className = "slider-news-active";
-      current = current >= total ? 0 : current + 1;
-    }, 5000);
+    newsElement.classList.remove("animated-out");
+    newsContainer.classList.remove("animated-out");
   } else {
-    news.classList.add("animated-out-news");
-    news.classList.remove("animated-in-news");
-    slider.innerHTML = "";
+    // Anima saída
+    newsElement.classList.remove("animated-in");
+    newsContainer.classList.remove("animated-in");
+
+    newsElement.classList.add("animated-out");
+    newsContainer.classList.add("animated-out");
+
+    // Depois de 700ms, atualiza e reentra
+    setTimeout(() => {
+      marquee.textContent = news;
+
+      newsElement.classList.remove("animated-out");
+      newsContainer.classList.remove("animated-out");
+
+      newsElement.classList.add("animated-in");
+      newsContainer.classList.add("animated-in");
+    }, 700);
   }
 }
